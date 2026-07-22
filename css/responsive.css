@@ -1,3 +1,5 @@
+.mobile-title { display:none; }
+
 @media (max-width:991.98px) {
   .navbar { padding:4px 0; }
   .brand-logo { height:78px; }
@@ -19,13 +21,17 @@
 @media (max-width:575.98px) {
   .brand-logo { height:64px; }
   .navbar.scrolled .brand-logo { height:58px; }
-  .hero { padding:94px 0 27px; }
+  .hero { padding:90px 0 24px; }
   .hero-copy { text-align:left; }
   .eyebrow,.hero-actions { justify-content:flex-start; }
-  h1 { font-size:clamp(2.85rem,14vw,3.55rem); }
+  h1 { font-size:clamp(2.25rem,10.3vw,2.65rem); line-height:1.06; letter-spacing:-.055em; }
+  .desktop-title { display:none; }
+  .mobile-title { display:inline; }
+  .eyebrow { margin-bottom:14px; }
+  .hero-description { margin-top:18px; margin-bottom:19px; font-size:.9rem; line-height:1.6; }
   .hero-description { margin-left:0; }
   .hero-actions { gap:13px; flex-wrap:wrap; }
-  .hero-visual { min-height:330px; padding-left:22px; }
+  .hero-visual { min-height:318px; margin-top:7px; padding-left:22px; }
   .visual-frame { width:94%; height:315px; border-radius:48px 8px 8px 8px; }
   .tech-card { padding:8px 9px; font-size:.5rem; }
   .tech-card i { font-size:1rem; }

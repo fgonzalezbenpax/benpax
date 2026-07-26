@@ -122,7 +122,7 @@ h1 em { color:var(--green); font-style:normal; }
 .service-yellow { color:#9a7414; border-top:4px solid var(--yellow); }
 .service-yellow .service-icon { color:var(--ink); background:var(--yellow); }
 .service-softland { grid-column:1/-1; display:grid; grid-template-columns:auto 1fr; gap:22px; align-items:center; min-height:0; padding:29px 32px; color:var(--yellow); border:0; background:linear-gradient(115deg,#183022 0%,#244a33 100%); }
-.service-softland .service-icon { margin:0; color:var(--ink); background:var(--yellow); }
+.service-softland .softland-logo { display:block; width:170px; height:auto; }
 .service-softland h3 { margin:5px 0 7px; color:#fff; font-size:1.28rem; }
 .service-softland p { max-width:780px; margin:0; color:rgba(255,255,255,.72); font-size:.82rem; line-height:1.7; }
 .service-tag { color:var(--yellow); font-size:.64rem; font-weight:600; text-transform:uppercase; letter-spacing:.13em; }
@@ -194,6 +194,7 @@ footer::before { content:""; position:absolute; top:0; right:0; left:0; height:3
   .service-grid { grid-template-columns:1fr; }
   .service-card { min-height:0; padding:27px 24px; }
   .service-softland { grid-template-columns:1fr; gap:14px; }
+  .service-softland .softland-logo { width:150px; }
   .services-cta { align-items:stretch; flex-direction:column; padding:22px; }
   footer { padding:18px 0 16px; }
   .footer-content { gap:13px; }
@@ -359,17 +360,10 @@ footer::before { content:""; position:absolute; top:0; right:0; left:0; height:3
             </article>
 
             <article class="service-card service-softland">
-              <div class="service-icon">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <ellipse cx="12" cy="5" rx="8" ry="3"/>
-                  <path d="M4 5v6c0 1.7 3.6 3 8 3M4 11v6c0 1.7 3.6 3 8 3"/>
-                  <circle cx="18" cy="17" r="3"/>
-                  <path d="M18 12.8v1.2M18 20v1.2M13.8 17H15M21 17h1.2M15 14l.9.9M20.1 19.1l.9.9M21 14l-.9.9M15.9 19.1l-.9.9"/>
-                </svg>
-              </div>
+              <img class="softland-logo" src="assets/brands/logotipo-softland.svg" alt="Softland">
               <div>
                 <span class="service-tag">Experiencia especializada</span>
-                <h3>Soporte Softland</h3>
+                <h3>SOFTLAND ERP</h3>
                 <p>Respaldos, actualizaciones, mantenciones y soporte a usuarios para mantener el sistema disponible y protegido.</p>
               </div>
             </article>

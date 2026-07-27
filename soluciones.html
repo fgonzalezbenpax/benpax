@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Soluciones tecnológicas integrales para empresas de Los Andes y alrededores.">
+  <meta name="theme-color" content="#5e7d3a">
+  <title>Soluciones | BENPAX Tecnología</title>
+  <style>
+    :root {
+      --green:#5e7d3a;
+      --green-dark:#456128;
+      --brown:#9a6a3f;
+      --blue:#245f89;
+      --yellow:#dfaf2b;
+      --ink:#183022;
+      --muted:#64706b;
+      --line:#e5ebe4;
+      --paper:#f7f9f5;
+      --white:#fff;
+      --shadow:0 20px 55px rgba(33,55,39,.12);
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0;
+      color:var(--ink);
+      background:var(--white);
+      font-family:"Segoe UI",Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; }
+    .container { width:min(1120px,calc(100% - 44px)); margin:auto; }
+
+    .navbar {
+      position:fixed;
+      z-index:50;
+      top:0;
+      right:0;
+      left:0;
+      background:rgba(255,255,255,.97);
+      border-bottom:1px solid rgba(94,125,58,.1);
+      backdrop-filter:blur(14px);
+    }
+    .navbar::after,
+    footer::before {
+      content:"";
+      position:absolute;
+      right:0;
+      left:0;
+      height:3px;
+      background:linear-gradient(90deg,var(--green) 0 32%,var(--brown) 32% 53%,var(--blue) 53% 82%,var(--yellow) 82% 100%);
+    }
+    .navbar::after { bottom:-1px; }
+    .nav-wrap { min-height:99px; display:flex; align-items:center; gap:24px; }
+    .brand-logo { display:block; width:auto; height:88px; object-fit:contain; }
+    .nav-menu { display:flex; align-items:center; gap:2px; margin-left:auto; }
+    .nav-link {
+      position:relative;
+      padding:10px 14px;
+      color:#4e5d54;
+      font-size:.81rem;
+      font-weight:500;
+    }
+    .nav-link::after {
+      content:"";
+      position:absolute;
+      right:14px;
+      bottom:2px;
+      left:14px;
+      height:2px;
+      background:var(--blue);
+      transform:scaleX(0);
+      transition:transform .22s ease;
+    }
+    .nav-link:hover,
+    .nav-link.active { color:var(--green-dark); }
+    .nav-link:hover::after,
+    .nav-link.active::after { transform:scaleX(1); }
+    .nav-actions { display:flex; align-items:center; gap:10px; }
+    .nav-support,
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:43px;
+      padding:11px 16px;
+      border:0;
+      border-radius:5px;
+      font-size:.76rem;
+      font-weight:700;
+      transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+    }
+    .nav-support {
+      color:#fff;
+      background:var(--blue);
+      box-shadow:0 7px 18px rgba(36,95,137,.22);
+    }
+    .btn-brand {
+      color:#fff;
+      background:var(--green);
+      box-shadow:5px 5px 0 rgba(154,106,63,.2);
+    }
+    .nav-support:hover,
+    .btn:hover { transform:translateY(-2px); }
+    .btn-brand:hover { background:var(--blue); }
+    .menu-toggle {
+      display:none;
+      margin-left:auto;
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:5px;
+      background:#fff;
+      color:var(--ink);
+      font-size:1.2rem;
+    }
+
+    .hero {
+      position:relative;
+      padding:164px 0 82px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 89% 18%,rgba(94,125,58,.12),transparent 24%),
+        linear-gradient(120deg,#fff 0%,#fbfcf9 54%,#f2f6ef 100%);
+    }
+    .hero::before {
+      content:"";
+      position:absolute;
+      width:340px;
+      height:340px;
+      right:-175px;
+      bottom:-150px;
+      border-radius:50%;
+      background:rgba(36,95,137,.07);
+    }
+    .hero-grid { display:grid; grid-template-columns:1.08fr .92fr; align-items:center; gap:76px; }
+    .eyebrow {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin:0 0 19px;
+      color:var(--green);
+      font-size:.71rem;
+      font-weight:700;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    .eyebrow span { width:36px; height:2px; background:var(--brown); }
+    h1 {
+      max-width:690px;
+      margin:0;
+      font-size:clamp(3rem,5vw,4.9rem);
+      line-height:1.02;
+      letter-spacing:-.065em;
+      font-weight:650;
+    }
+    h1 em { color:var(--green); font-style:normal; }
+    .hero-copy > p:last-of-type {
+      max-width:590px;
+      margin:25px 0 28px;
+      color:var(--muted);
+      font-size:1rem;
+      line-height:1.75;
+    }
+    .solution-map {
+      position:relative;
+      display:grid;
+      gap:13px;
+      padding:28px;
+      border:1px solid rgba(36,95,137,.16);
+      border-radius:74px 12px 12px 12px;
+      background:rgba(255,255,255,.92);
+      box-shadow:var(--shadow);
+    }
+    .solution-map::after {
+      content:"";
+      position:absolute;
+      z-index:-1;
+      right:-18px;
+      bottom:-18px;
+      width:68%;
+      height:56%;
+      border:2px solid rgba(154,106,63,.35);
+      border-radius:12px;
+    }
+    .map-row {
+      display:grid;
+      grid-template-columns:48px 1fr auto;
+      align-items:center;
+      gap:14px;
+      padding:14px 15px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:var(--paper);
+    }
+    .map-icon {
+      display:grid;
+      place-items:center;
+      width:48px;
+      height:48px;
+      border-radius:7px;
+      color:#fff;
+      font-size:1.15rem;
+      font-weight:800;
+    }
+    .map-row:nth-child(1) .map-icon { background:var(--green); }
+    .map-row:nth-child(2) .map-icon { background:var(--blue); }
+    .map-row:nth-child(3) .map-icon { background:var(--brown); }
+    .map-row:nth-child(4) .map-icon { color:var(--ink); background:var(--yellow); }
+    .map-row strong { display:block; margin-bottom:4px; font-size:.89rem; }
+    .map-row small { color:var(--muted); font-size:.69rem; }
+    .map-state { color:var(--green); font-size:.67rem; font-weight:700; text-transform:uppercase; }
+
+    .solutions { position:relative; padding:94px 0; }
+    .section-heading {
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      align-items:end;
+      gap:70px;
+      margin-bottom:42px;
+    }
+    .section-heading .eyebrow { grid-column:1/-1; margin-bottom:-45px; }
+    h2 {
+      margin:0;
+      font-size:clamp(2.25rem,3.8vw,3.75rem);
+      line-height:1.08;
+      letter-spacing:-.052em;
+      font-weight:650;
+    }
+    h2 em { color:var(--green); font-style:normal; }
+    .section-heading > p:last-child { margin:0; color:var(--muted); font-size:.92rem; line-height:1.75; }
+    .solution-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .solution-card {
+      position:relative;
+      min-height:320px;
+      padding:31px 29px 29px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-top:4px solid var(--card-color);
+      border-radius:9px;
+      background:var(--paper);
+      transition:transform .25s ease,box-shadow .25s ease;
+    }
+    .solution-card:hover { transform:translateY(-5px); box-shadow:0 18px 38px rgba(33,55,39,.1); }
+    .solution-card:nth-child(1) { --card-color:var(--green); }
+    .solution-card:nth-child(2) { --card-color:var(--blue); }
+    .solution-card:nth-child(3) { --card-color:var(--brown); }
+    .solution-card:nth-child(4) { --card-color:var(--yellow); }
+    .card-number {
+      display:grid;
+      place-items:center;
+      width:47px;
+      height:47px;
+      margin-bottom:22px;
+      border-radius:7px;
+      color:#fff;
+      background:var(--card-color);
+      font-weight:800;
+    }
+    .solution-card:nth-child(4) .card-number { color:var(--ink); }
+    .solution-card h3 { margin:0 0 12px; font-size:1.18rem; }
+    .solution-card p { margin:0 0 18px; color:var(--muted); font-size:.82rem; line-height:1.7; }
+    .solution-card ul { display:grid; gap:9px; margin:0; padding:0; list-style:none; }
+    .solution-card li { position:relative; padding-left:18px; color:#526159; font-size:.78rem; line-height:1.55; }
+    .solution-card li::before {
+      content:"";
+      position:absolute;
+      top:.58em;
+      left:0;
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--card-color);
+    }
+    .feathers {
+      position:absolute;
+      right:-20px;
+      bottom:-18px;
+      width:155px;
+      height:105px;
+      opacity:.19;
+      filter:blur(.25px);
+      transform:rotate(-7deg);
+    }
+    .feather {
+      position:absolute;
+      width:19px;
+      height:93px;
+      border-radius:95% 8% 95% 8%;
+      transform-origin:bottom center;
+      box-shadow:inset -5px 0 10px rgba(255,255,255,.45);
+    }
+    .feather::after {
+      content:"";
+      position:absolute;
+      width:2px;
+      top:7px;
+      bottom:-10px;
+      left:50%;
+      background:rgba(24,48,34,.28);
+      transform:rotate(2deg);
+    }
+    .feather-green { left:24px; bottom:0; background:linear-gradient(145deg,transparent 0 6%,var(--green) 22% 75%,transparent); transform:rotate(-28deg); }
+    .feather-brown { left:64px; bottom:0; background:linear-gradient(145deg,transparent 0 6%,var(--brown) 22% 75%,transparent); transform:rotate(-7deg); }
+    .feather-blue { left:101px; bottom:0; background:linear-gradient(145deg,transparent 0 6%,var(--blue) 22% 75%,transparent); transform:rotate(16deg); }
+
+    .modalities {
+      position:relative;
+      padding:88px 0;
+      overflow:hidden;
+      color:#fff;
+      background:linear-gradient(115deg,#183022 0%,#244a33 100%);
+    }
+    .modalities::after {
+      content:"";
+      position:absolute;
+      right:-100px;
+      top:-105px;
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      background:rgba(223,175,43,.08);
+    }
+    .modalities .eyebrow { color:var(--yellow); }
+    .modalities .eyebrow span { background:var(--brown); }
+    .modalities h2 { max-width:750px; color:#fff; }
+    .mode-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; margin-top:37px; }
+    .mode {
+      min-height:170px;
+      padding:25px 22px;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:8px;
+      background:rgba(255,255,255,.06);
+    }
+    .mode span { color:var(--yellow); font-size:1.25rem; }
+    .mode h3 { margin:13px 0 8px; color:#fff; font-size:.98rem; }
+    .mode p { margin:0; color:rgba(255,255,255,.68); font-size:.76rem; line-height:1.6; }
+
+    .process { padding:90px 0; background:var(--paper); }
+    .process-header { display:flex; align-items:end; justify-content:space-between; gap:45px; margin-bottom:38px; }
+    .process-header p:last-child { max-width:450px; margin:0; color:var(--muted); line-height:1.7; }
+    .steps { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+    .step { position:relative; padding:25px 26px; border:1px solid var(--line); background:#fff; }
+    .step:not(:last-child)::after {
+      content:"→";
+      position:absolute;
+      z-index:2;
+      top:50%;
+      right:-14px;
+      display:grid;
+      place-items:center;
+      width:28px;
+      height:28px;
+      border-radius:50%;
+      color:#fff;
+      background:var(--green);
+      transform:translateY(-50%);
+    }
+    .step strong { color:var(--green); font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; }
+    .step h3 { margin:12px 0 8px; font-size:1rem; }
+    .step p { margin:0; color:var(--muted); font-size:.76rem; line-height:1.58; }
+
+    .cta { padding:70px 0; background:#fff; }
+    .cta-box {
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:32px;
+      padding:36px 39px;
+      overflow:hidden;
+      border:1px solid rgba(94,125,58,.18);
+      border-radius:10px;
+      background:#f3f7f0;
+    }
+    .cta-box h2 { font-size:clamp(1.85rem,3vw,2.7rem); }
+    .cta-box p { margin:9px 0 0; color:var(--muted); font-size:.86rem; }
+
+    footer { position:relative; padding:22px 0 18px; border-top:1px solid var(--line); background:#fff; }
+    footer::before { top:0; }
+    .footer-content { display:flex; align-items:center; justify-content:space-between; gap:25px; }
+    .footer-contact { display:flex; flex-wrap:wrap; color:#68756d; font-size:.72rem; }
+    .footer-contact a { display:inline-flex; align-items:center; white-space:nowrap; }
+    .footer-contact a:not(:last-child)::after {
+      content:"";
+      width:4px;
+      height:4px;
+      margin:0 18px;
+      border-radius:50%;
+      background:var(--yellow);
+    }
+    footer p { margin:0; color:#8f9993; font-size:.64rem; }
+
+    @media (max-width:1050px) {
+      .nav-menu { display:none; }
+      .menu-toggle { display:block; }
+      .nav-actions { display:none; }
+      .navbar.open .nav-menu,
+      .navbar.open .nav-actions {
+        display:flex;
+        position:absolute;
+        right:22px;
+        left:22px;
+        flex-direction:column;
+        align-items:stretch;
+        background:#fff;
+      }
+      .navbar.open .nav-menu { top:92px; padding:15px 18px 5px; }
+      .navbar.open .nav-actions { top:306px; padding:5px 18px 18px; }
+      .hero-grid { grid-template-columns:1fr; gap:50px; }
+      .solution-map { max-width:670px; }
+      .mode-grid { grid-template-columns:repeat(2,1fr); }
+      .steps { grid-template-columns:repeat(2,1fr); gap:14px; }
+      .step:not(:last-child)::after { display:none; }
+    }
+    @media (max-width:720px) {
+      .container { width:min(100% - 30px,1120px); }
+      .nav-wrap { min-height:77px; }
+      .brand-logo { height:66px; }
+      .navbar.open .nav-menu { top:76px; }
+      .navbar.open .nav-actions { top:290px; }
+      .hero { padding:116px 0 58px; }
+      h1 { font-size:clamp(2.5rem,12vw,3.3rem); }
+      .solution-map { padding:18px; border-radius:45px 10px 10px; }
+      .map-row { grid-template-columns:42px 1fr; }
+      .map-icon { width:42px; height:42px; }
+      .map-state { display:none; }
+      .solutions,
+      .modalities,
+      .process { padding:67px 0; }
+      .section-heading { grid-template-columns:1fr; gap:17px; }
+      .section-heading .eyebrow { grid-column:auto; margin-bottom:0; }
+      .solution-grid,
+      .mode-grid,
+      .steps { grid-template-columns:1fr; }
+      .solution-card { min-height:0; }
+      .process-header,
+      .cta-box,
+      .footer-content { align-items:flex-start; flex-direction:column; }
+      .cta { padding:48px 0; }
+      .cta-box { padding:29px 25px; }
+      .cta-box .btn { width:100%; }
+      .footer-contact { flex-direction:column; gap:7px; }
+      .footer-contact a:not(:last-child)::after { display:none; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      * { scroll-behavior:auto!important; transition:none!important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar" aria-label="Navegación principal">
+      <div class="container nav-wrap">
+        <a href="index.html" aria-label="BENPAX Tecnología, inicio">
+          <img class="brand-logo" src="assets/signature/logo-benpax.png" alt="BENPAX Tecnología">
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Abrir menú">☰</button>
+        <div class="nav-menu">
+          <a class="nav-link" href="index.html">Inicio</a>
+          <a class="nav-link" href="index.html#servicios">Servicios</a>
+          <a class="nav-link active" aria-current="page" href="#">Soluciones</a>
+          <a class="nav-link" href="#">Nosotros</a>
+          <a class="nav-link" href="#contacto">Contacto</a>
+        </div>
+        <div class="nav-actions">
+          <a class="nav-support" href="https://soporte.benpax.cl"><span aria-hidden="true">●</span> Mesa de Ayuda</a>
+          <a class="btn btn-brand" href="mailto:contacto@benpax.cl"><span aria-hidden="true">✉</span> Hablemos</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span>Soluciones que mantienen tu empresa en marcha</p>
+          <h1 id="hero-title">Convertimos tus necesidades en <em>soluciones.</em></h1>
+          <p>Integramos soporte, equipos, redes, seguridad y sistemas para resolver problemas reales y dar continuidad al trabajo de tu empresa.</p>
+          <a class="btn btn-brand" href="mailto:contacto@benpax.cl">Conversemos <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="solution-map" aria-label="Áreas integradas de solución">
+          <div class="map-row">
+            <span class="map-icon" aria-hidden="true">▣</span>
+            <span><strong>Continuidad operativa</strong><small>Equipos listos para trabajar</small></span>
+            <span class="map-state">Activo</span>
+          </div>
+          <div class="map-row">
+            <span class="map-icon" aria-hidden="true">◉</span>
+            <span><strong>Soporte y mantención</strong><small>Asistencia remota y presencial</small></span>
+            <span class="map-state">Disponible</span>
+          </div>
+          <div class="map-row">
+            <span class="map-icon" aria-hidden="true">⌘</span>
+            <span><strong>Redes y seguridad</strong><small>Conectividad estable y protegida</small></span>
+            <span class="map-state">Protegido</span>
+          </div>
+          <div class="map-row">
+            <span class="map-icon" aria-hidden="true">S</span>
+            <span><strong>Softland ERP</strong><small>Respaldo y soporte especializado</small></span>
+            <span class="map-state">Gestionado</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="solutions" aria-labelledby="solutions-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow"><span></span>Una respuesta completa</p>
+          <h2 id="solutions-title">Tecnología pensada para <em>trabajar mejor</em></h2>
+          <p>No ofrecemos piezas aisladas. Analizamos la necesidad, combinamos los servicios adecuados y acompañamos su implementación.</p>
+        </div>
+
+        <div class="solution-grid">
+          <article class="solution-card">
+            <span class="card-number">01</span>
+            <h3>Equipamiento y continuidad operativa</h3>
+            <p>Mantenemos computadores, impresoras y herramientas de trabajo disponibles para reducir interrupciones.</p>
+            <ul>
+              <li>Diagnóstico y renovación planificada.</li>
+              <li>Mantenciones preventivas y correctivas.</li>
+              <li>Configuración de puestos de trabajo.</li>
+            </ul>
+            <div class="feathers" aria-hidden="true"><i class="feather feather-green"></i><i class="feather feather-brown"></i><i class="feather feather-blue"></i></div>
+          </article>
+          <article class="solution-card">
+            <span class="card-number">02</span>
+            <h3>Soporte y mantención informática</h3>
+            <p>Resolvemos requerimientos técnicos y acompañamos a los usuarios con atención cercana y seguimiento.</p>
+            <ul>
+              <li>Soporte remoto y atención en terreno.</li>
+              <li>Windows, programas y cuentas de usuario.</li>
+              <li>Registro y seguimiento de requerimientos.</li>
+            </ul>
+            <div class="feathers" aria-hidden="true"><i class="feather feather-green"></i><i class="feather feather-brown"></i><i class="feather feather-blue"></i></div>
+          </article>
+          <article class="solution-card">
+            <span class="card-number">03</span>
+            <h3>Redes, seguridad y respaldos</h3>
+            <p>Diseñamos una base tecnológica estable para conectar, proteger y respaldar la información de la empresa.</p>
+            <ul>
+              <li>Redes cableadas, Wi-Fi y conectividad.</li>
+              <li>Accesos, antivirus y almacenamiento.</li>
+              <li>Respaldo y recuperación de información.</li>
+            </ul>
+            <div class="feathers" aria-hidden="true"><i class="feather feather-green"></i><i class="feather feather-brown"></i><i class="feather feather-blue"></i></div>
+          </article>
+          <article class="solution-card">
+            <span class="card-number">04</span>
+            <h3>Soporte especializado en Softland ERP</h3>
+            <p>Ayudamos a mantener Softland disponible, actualizado y protegido para los procesos administrativos.</p>
+            <ul>
+              <li>Actualizaciones y mantenciones.</li>
+              <li>Respaldos y revisión preventiva.</li>
+              <li>Asistencia a usuarios del sistema.</li>
+            </ul>
+            <div class="feathers" aria-hidden="true"><i class="feather feather-green"></i><i class="feather feather-brown"></i><i class="feather feather-blue"></i></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="modalities" aria-labelledby="modes-title">
+      <div class="container">
+        <p class="eyebrow"><span></span>Nos adaptamos a tu operación</p>
+        <h2 id="modes-title">Elige la modalidad que necesita tu empresa</h2>
+        <div class="mode-grid">
+          <article class="mode"><span aria-hidden="true">↗</span><h3>Soporte remoto</h3><p>Respuesta ágil para resolver incidencias sin esperar una visita.</p></article>
+          <article class="mode"><span aria-hidden="true">⌂</span><h3>Atención presencial</h3><p>Servicio en terreno para empresas de Los Andes y alrededores.</p></article>
+          <article class="mode"><span aria-hidden="true">✓</span><h3>Por requerimiento</h3><p>Atención puntual cuando surge una necesidad específica.</p></article>
+          <article class="mode"><span aria-hidden="true">↻</span><h3>Plan programado</h3><p>Mantención preventiva y acompañamiento periódico para tu empresa.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="process-header">
+          <div>
+            <p class="eyebrow"><span></span>Cómo trabajamos</p>
+            <h2 id="process-title">Un proceso claro y cercano</h2>
+          </div>
+          <p>Desde el primer contacto hasta el seguimiento, sabrás qué estamos haciendo y por qué.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><strong>Paso 1</strong><h3>Nos cuentas</h3><p>Escuchamos la necesidad y reunimos los antecedentes.</p></article>
+          <article class="step"><strong>Paso 2</strong><h3>Diagnosticamos</h3><p>Revisamos el problema y definimos la mejor alternativa.</p></article>
+          <article class="step"><strong>Paso 3</strong><h3>Implementamos</h3><p>Ejecutamos la solución con orden y comunicación.</p></article>
+          <article class="step"><strong>Paso 4</strong><h3>Acompañamos</h3><p>Verificamos el resultado y damos seguimiento.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>¿Tienes una necesidad tecnológica?</h2>
+            <p>Conversemos y busquemos una solución adecuada para tu empresa.</p>
+          </div>
+          <a class="btn btn-brand" href="mailto:contacto@benpax.cl">Hablemos <span aria-hidden="true">↗</span></a>
+          <div class="feathers" aria-hidden="true"><i class="feather feather-green"></i><i class="feather feather-brown"></i><i class="feather feather-blue"></i></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="container footer-content">
+      <div class="footer-contact">
+        <a href="tel:+56965862954">+56 9 6586 29 54</a>
+        <a href="mailto:contacto@benpax.cl">contacto@benpax.cl</a>
+        <a href="https://www.benpax.cl">www.benpax.cl</a>
+      </div>
+      <p>© <span id="year"></span> BENPAX Tecnología</p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelector('#year').textContent = new Date().getFullYear();
+    const navbar = document.querySelector('.navbar');
+    const toggle = document.querySelector('.menu-toggle');
+    toggle.addEventListener('click', () => {
+      const isOpen = navbar.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.textContent = isOpen ? '×' : '☰';
+    });
+  </script>
+</body>
+</html>
+

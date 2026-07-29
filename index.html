@@ -31,41 +31,18 @@ body {
   margin:0;
   color:var(--ink);
   overflow-x:hidden;
-  background:
-    radial-gradient(ellipse 56% 38% at 3% 8%,rgba(94,125,58,.18),transparent 70%),
-    radial-gradient(ellipse 54% 42% at 98% 23%,rgba(36,95,137,.16),transparent 70%),
-    radial-gradient(ellipse 58% 40% at 72% 76%,rgba(154,106,63,.13),transparent 70%),
-    radial-gradient(ellipse 38% 30% at 14% 88%,rgba(223,175,43,.12),transparent 72%),
-    linear-gradient(135deg,#edf5ef 0%,#f7faf8 38%,#faf6ef 70%,#eef4f6 100%);
+  background-color:#f7f8f5;
+  background-image:url("assets/fondo-benpax-aprobado.png");
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center top;
   background-attachment:fixed;
   font-family:"Segoe UI",Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
 }
-body::before {
-  content:"";
-  position:fixed;
-  inset:-18%;
-  z-index:-1;
-  pointer-events:none;
-  opacity:.72;
-  background:
-    linear-gradient(118deg,transparent 0 33%,rgba(94,125,58,.10) 33.5% 41%,transparent 41.5% 100%),
-    linear-gradient(302deg,transparent 0 45%,rgba(36,95,137,.085) 45.5% 54%,transparent 54.5% 100%),
-    radial-gradient(ellipse at 56% 48%,rgba(255,255,255,.72) 0 10%,transparent 46%);
-  filter:blur(24px);
-  transform:rotate(-5deg);
-}
+body::before,
 body::after {
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
-  opacity:.22;
-  background:
-    repeating-linear-gradient(122deg,transparent 0 86px,rgba(36,95,137,.08) 87px 88px,transparent 89px 174px),
-    repeating-linear-gradient(302deg,transparent 0 112px,rgba(94,125,58,.07) 113px 114px,transparent 115px 230px);
-  mix-blend-mode:multiply;
+  content:none;
 }
 a { color:inherit; text-decoration:none; }
 .navbar { padding:5px 0; background:rgba(255,255,255,.96); border-bottom:0; transition:padding .3s ease,box-shadow .3s ease; backdrop-filter:blur(14px); }

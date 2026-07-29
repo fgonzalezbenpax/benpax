@@ -36,8 +36,8 @@ a { color:inherit; text-decoration:none; }
 .navbar::after { content:""; position:absolute; right:0; bottom:-1px; left:0; height:3px; background-image:linear-gradient(105deg,transparent 0 42%,rgba(255,255,255,.98) 50%,transparent 58% 100%),linear-gradient(90deg,var(--green) 0 32%,var(--brown) 32% 53%,var(--blue) 53% 82%,var(--yellow) 82% 100%); background-repeat:no-repeat; background-position:-34% 0,0 0; background-size:26% 100%,100% 100%; opacity:.82; will-change:background-position; }
 .navbar.scrolled { padding:3px 0; box-shadow:0 6px 28px rgba(31,52,37,.1); }
 .navbar-brand { display:inline-flex; align-items:center; padding:0; }
-.brand-logo { display:block; width:auto; height:95px; object-fit:contain; transition:height .3s ease; }
-.navbar.scrolled .brand-logo { height:95px; }
+.brand-logo { display:block; width:auto; height:100px; object-fit:contain; transition:height .3s ease; }
+.navbar.scrolled .brand-logo { height:100px; }
 .nav-link { position:relative; padding:8px 16px!important; color:#4e5d54; font-size:14px; font-weight:500; }
 .nav-link::after { content:""; position:absolute; right:16px; bottom:2px; left:16px; height:2px; background:var(--blue); transform:scaleX(0); transform-origin:center; transition:transform .25s ease; }
 .nav-link:hover,.nav-link.active { color:var(--green-dark); }

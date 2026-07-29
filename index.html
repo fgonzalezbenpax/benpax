@@ -83,6 +83,84 @@ a { color:inherit; text-decoration:none; }
 .btn-whatsapp { border-color:#25d366; background:#25d366; box-shadow:none; }
 .btn-whatsapp:hover { border-color:#1eaa52; background:#1eaa52; box-shadow:none; }
 .btn-whatsapp svg { width:19px; height:19px; fill:currentColor; }
+
+.section-with-feathers { position:relative; }
+.section-with-feathers > .container { position:relative; z-index:1; }
+.page-feathers {
+  position:absolute;
+  z-index:0;
+  right:clamp(18px,6vw,96px);
+  bottom:clamp(20px,7vw,82px);
+  width:164px;
+  height:128px;
+  pointer-events:none;
+  opacity:.28;
+  filter:blur(.25px) drop-shadow(0 8px 16px rgba(24,48,34,.08));
+  transform:rotate(-7deg);
+}
+.page-feather {
+  position:absolute;
+  bottom:7px;
+  left:72px;
+  width:23px;
+  height:106px;
+  border-radius:100% 0 100% 0;
+  transform-origin:50% 100%;
+  box-shadow:inset -6px -4px 12px rgba(255,255,255,.3),0 5px 12px rgba(24,48,34,.08);
+}
+.page-feather::after {
+  content:"";
+  position:absolute;
+  left:10px;
+  bottom:-12px;
+  width:1.5px;
+  height:100px;
+  border-radius:2px;
+  background:rgba(255,255,255,.72);
+  transform:rotate(-1deg);
+  transform-origin:bottom;
+}
+.page-feather:nth-child(1) {
+  background:linear-gradient(150deg,rgba(94,125,58,.98),rgba(94,125,58,.14));
+  transform:translateX(-42px) rotate(-29deg) scale(.88);
+}
+.page-feather:nth-child(2) {
+  background:linear-gradient(150deg,rgba(154,106,63,.96),rgba(154,106,63,.14));
+  transform:translateX(-4px) rotate(-7deg);
+}
+.page-feather:nth-child(3) {
+  background:linear-gradient(150deg,rgba(36,95,137,.98),rgba(36,95,137,.14));
+  transform:translateX(34px) rotate(17deg) scale(.92);
+}
+.hero .page-feathers { top:18%; right:3%; bottom:auto; opacity:.22; }
+.services .page-feathers { top:16%; right:auto; left:2%; bottom:auto; opacity:.24; }
+.solutions .page-feathers { top:15%; right:3%; bottom:auto; opacity:.23; }
+.modalities .page-feathers { right:3%; bottom:17%; }
+.process .page-feathers { left:3%; right:auto; bottom:17%; }
+.about .page-feathers { top:15%; right:3%; bottom:auto; opacity:.23; }
+.contact .page-feathers { left:3%; right:auto; bottom:17%; }
+@media (max-width:767.98px) {
+  .page-feathers {
+    width:118px;
+    height:94px;
+    opacity:.2;
+    right:10px!important;
+    left:auto!important;
+  }
+  .page-feather {
+    width:17px;
+    height:78px;
+    left:51px;
+  }
+  .page-feather::after {
+    left:7px;
+    height:73px;
+  }
+  .page-feather:nth-child(1) { transform:translateX(-29px) rotate(-27deg) scale(.86); }
+  .page-feather:nth-child(2) { transform:translateX(-3px) rotate(-7deg); }
+  .page-feather:nth-child(3) { transform:translateX(23px) rotate(16deg) scale(.9); }
+}
+
 .hero { position:relative; box-sizing:border-box; width:100%; min-height:100svh; padding:126px 0 34px; overflow:hidden; background:transparent; }
 .hero .container { z-index:1; }
 .hero .row { min-height:min(520px,calc(100svh - 221px)); }
@@ -511,7 +589,10 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
     </header>
 
     <main id="inicio">
-      <section class="hero" aria-labelledby="hero-title">
+      <section class="section-with-feathers hero" aria-labelledby="hero-title">
+        <div class="page-feathers" aria-hidden="true">
+          <span class="page-feather"></span><span class="page-feather"></span><span class="page-feather"></span>
+        </div>
         <div class="container position-relative">
           <div class="row align-items-center gy-4">
             <div class="col-lg-6 hero-copy">
@@ -535,7 +616,10 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
         </div>
       </section>
 
-      <section id="servicios" class="services site-section" aria-labelledby="services-title">
+      <section id="servicios" class="section-with-feathers services site-section" aria-labelledby="services-title">
+        <div class="page-feathers" aria-hidden="true">
+          <span class="page-feather"></span><span class="page-feather"></span><span class="page-feather"></span>
+        </div>
         <div class="container">
           <div class="services-heading">
             <p class="eyebrow"><span></span>Soporte que responde y gestiona</p>
@@ -559,7 +643,6 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
                 <li>Instalación y mantención de impresoras locales y de red.</li>
               </ul>
             
-              <div class="service-feathers" aria-hidden="true"><span class="service-feather"></span><span class="service-feather"></span><span class="service-feather"></span></div>
             </article>
 
             <article class="service-card service-blue">
@@ -576,7 +659,6 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
                 <li>Asistencia por escritorio remoto o en terreno.</li>
               </ul>
             
-              <div class="service-feathers" aria-hidden="true"><span class="service-feather"></span><span class="service-feather"></span><span class="service-feather"></span></div>
             </article>
 
             <article class="service-card service-brown">
@@ -593,7 +675,6 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
                 <li>Instalación, configuración y mantención de antivirus.</li>
               </ul>
             
-              <div class="service-feathers" aria-hidden="true"><span class="service-feather"></span><span class="service-feather"></span><span class="service-feather"></span></div>
             </article>
 
             <article class="service-card service-yellow">
@@ -612,7 +693,6 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
                 <li>Diagnóstico y solución de problemas de conectividad.</li>
               </ul>
             
-              <div class="service-feathers" aria-hidden="true"><span class="service-feather"></span><span class="service-feather"></span><span class="service-feather"></span></div>
             </article>
 
             <article class="service-card service-softland">
@@ -631,7 +711,10 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
         </div>
       </section>
 
-      <section id="soluciones" class="solutions site-section" aria-labelledby="solutions-title">
+      <section id="soluciones" class="section-with-feathers solutions site-section" aria-labelledby="solutions-title">
+        <div class="page-feathers" aria-hidden="true">
+          <span class="page-feather"></span><span class="page-feather"></span><span class="page-feather"></span>
+        </div>
         <div class="container">
           <div class="section-heading">
             <p class="eyebrow"><span></span>Una respuesta completa</p>
@@ -647,7 +730,10 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
         </div>
       </section>
 
-      <section class="modalities" aria-labelledby="modes-title">
+      <section class="section-with-feathers modalities" aria-labelledby="modes-title">
+        <div class="page-feathers" aria-hidden="true">
+          <span class="page-feather"></span><span class="page-feather"></span><span class="page-feather"></span>
+        </div>
         <div class="container">
           <p class="eyebrow"><span></span>Nos adaptamos a tu operación</p>
           <h2 id="modes-title">Elige la modalidad que necesita tu empresa</h2>
@@ -660,7 +746,10 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
         </div>
       </section>
 
-      <section class="process" aria-labelledby="process-title">
+      <section class="section-with-feathers process" aria-labelledby="process-title">
+        <div class="page-feathers" aria-hidden="true">
+          <span class="page-feather"></span><span class="page-feather"></span><span class="page-feather"></span>
+        </div>
         <div class="container">
           <div class="process-header"><div><p class="eyebrow"><span></span>Cómo trabajamos</p><h2 id="process-title">Un proceso claro y cercano</h2></div><p>Desde el primer contacto hasta el seguimiento, sabrás qué estamos haciendo y por qué.</p></div>
           <div class="steps">
@@ -672,7 +761,10 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
         </div>
       </section>
 
-      <section id="nosotros" class="about site-section" aria-labelledby="about-title">
+      <section id="nosotros" class="section-with-feathers about site-section" aria-labelledby="about-title">
+        <div class="page-feathers" aria-hidden="true">
+          <span class="page-feather"></span><span class="page-feather"></span><span class="page-feather"></span>
+        </div>
         <div class="container about-grid">
           <div class="about-mark"><img src="assets/signature/logo-benpax.png" alt="BENPAX Tecnología"></div>
           <div class="about-copy">
@@ -689,7 +781,10 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
         </div>
       </section>
 
-      <section id="contacto" class="contact site-section" aria-labelledby="contact-title">
+      <section id="contacto" class="section-with-feathers contact site-section" aria-labelledby="contact-title">
+        <div class="page-feathers" aria-hidden="true">
+          <span class="page-feather"></span><span class="page-feather"></span><span class="page-feather"></span>
+        </div>
         <div class="container contact-grid">
           <div class="contact-copy">
             <p class="eyebrow"><span></span>Contacto</p>

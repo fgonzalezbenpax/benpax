@@ -115,7 +115,7 @@ h1 em { color:var(--green); font-style:normal; }
 .btn-text:hover i { display:inline-block; transform:translateX(5px); }
 .hero-visual { position:relative; min-height:450px; padding-left:42px; }
 .visual-frame { position:relative; z-index:2; width:90%; height:430px; overflow:hidden; border:1px solid rgba(36,95,137,.22); border-bottom:6px solid var(--blue); border-radius:12px; box-shadow:var(--shadow); background:#e4eadf; }
-.visual-frame img { width:100%; height:100%; object-fit:cover; object-position:center; will-change:transform; }
+.visual-frame img,.visual-frame video { width:100%; height:100%; object-fit:cover; object-position:center; will-change:transform; }
 .visual-frame::after { content:""; position:absolute; z-index:1; top:-18%; bottom:-18%; left:-58%; width:42%; pointer-events:none; opacity:0; transform:skewX(-18deg); background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.06) 24%,rgba(255,255,255,.52) 52%,rgba(223,175,43,.13) 72%,transparent 100%); filter:blur(1px); will-change:transform,opacity; }
 .image-accent { position:absolute; z-index:1; right:2px; bottom:2px; width:69%; height:55%; border:2px solid rgba(154,106,63,.42); border-radius:12px; }
 .tech-card { position:absolute; z-index:3; display:flex; align-items:center; gap:9px; padding:10px 13px; color:#617068; background:rgba(255,255,255,.94); box-shadow:0 12px 30px rgba(35,55,41,.12); backdrop-filter:blur(8px); font-size:.57rem; line-height:1.45; }
@@ -490,7 +490,7 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
 .reveal-delay-2 { animation-delay:.16s; }
 .reveal-delay-3 { animation-delay:.24s; }
 .reveal-delay-4 { animation-delay:.32s; }
-.visual-frame img { animation:heroImageDrift 12s ease-in-out infinite alternate; }
+.visual-frame img,.visual-frame video { animation:heroImageDrift 12s ease-in-out infinite alternate; }
 .visual-frame::after { animation:photoShine 6.8s ease-in-out infinite; }
 .navbar::after { animation:brandLineShine 6.8s ease-in-out infinite; }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; } }
@@ -541,7 +541,7 @@ footer { position:relative; padding:21px 0 18px; background:rgba(255,255,255,.72
             </div>
             <div class="col-lg-6 hero-visual reveal reveal-delay-2">
               <div class="visual-frame">
-                <img src="img/hero/benpax-hands-notebook.webp" width="1400" height="1050" alt="Manos trabajando en un notebook junto a equipos de red en un espacio profesional">
+                <video width="960" height="540" autoplay muted loop playsinline preload="metadata" poster="assets/hero/benpax-video-manos-teclado-fangov-poster.jpg" aria-label="Manos escribiendo en un teclado">\n                  <source src="assets/hero/benpax-video-manos-teclado-fangov.mp4" type="video/mp4">\n                  <img src="img/hero/benpax-hands-notebook.webp" width="1400" height="1050" alt="Manos trabajando en un notebook junto a equipos de red en un espacio profesional">\n                </video>
               </div>
               <div class="tech-card card-equipment"><span aria-hidden="true">▣</span><span>Equipos e<br><b>impresoras</b></span></div>
               <div class="tech-card card-users"><span aria-hidden="true">◉</span><span>Soporte a<br><b>usuarios</b></span></div>
